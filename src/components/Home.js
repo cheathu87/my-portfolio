@@ -12,13 +12,13 @@ export default function Home() {
   const [isWelcomeAnimating, setIsWelcomeAnimating] = useState(true);
   const [currentBackground, setCurrentBackground] = useState(0);
   const roles = ['I am Frontend Developer', 'I am Designer'];
-  const fullText = "I am ,harsha p";
+  const fullText = "I am ,Chetan Sreenatha";
   const welcomeFullText = "Welcome";
   const textRef = useRef(null);
   
   // Background image(s)
   const backgroundImages = [
-    '/frontend-backend.jpg'
+    '/images4.jpeg.jpg'
   ];
   
   // Role switcher effect

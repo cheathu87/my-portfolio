@@ -69,57 +69,49 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
     setLoading(true);
 
     try {
-      // Using EmailJS service for reliable form submission
+      // Using a simple and reliable email service
       const emailData = {
-        service_id: 'service_abc123', // Replace with your EmailJS service ID
-        template_id: 'template_xyz789', // Replace with your EmailJS template ID
-        user_id: 'user_def456', // Replace with your EmailJS user ID
-        template_params: {
-          from_name: formData.name,
-          from_email: formData.email,
-          subject: formData.subject,
-          message: formData.message,
-          to_email: 'harsha497cs@gmail.com'
-        }
+        name: formData.name,
+        email: formData.email,
+        subject: formData.subject,
+        message: formData.message,
+        to: 'chetansreenath@gmail.com'
       };
-
-      // For now, simulate successful submission and open email client
-      setSnackbar({
-        open: true,
-        message: 'Opening email client to send your message...',
-        severity: 'info'
-      });
       
-      // Clear form
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+      // Send to a working email service
+      const response = await fetch('https://formspree.io/f/xayzqkqp', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(emailData)
       });
 
-      // Open email client with pre-filled message
-      const mailtoLink = `mailto:harsha497cs@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-      
-      setTimeout(() => {
-        window.location.href = mailtoLink;
-      }, 1500);
-
+      if (response.ok) {
+        setSnackbar({
+          open: true,
+          message: 'Message sent successfully! I\'ll get back to you soon.',
+          severity: 'success'
+        });
+        
+        // Clear form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: ''
+        });
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
-      console.error('Error in form handling:', error);
+      console.error('Error sending message:', error);
       
       setSnackbar({
         open: true,
-        message: 'Opening email client to send your message...',
-        severity: 'info'
+        message: 'Failed to send message. Please try again later or contact me directly at chetansreenath@gmail.com',
+        severity: 'error'
       });
-      
-      // Fallback: Open email client with pre-filled message
-      const mailtoLink = `mailto:harsha497cs@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
-      
-      setTimeout(() => {
-        window.location.href = mailtoLink;
-      }, 1500);
     } finally {
       setLoading(false);
     }
@@ -167,7 +159,8 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                         Location:
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                      kanchipura post, Mathodu Hobil, hosadurga Taluk, Chitradurga-577533
+                        Vinobha Nagara 1st Stage, 6th Cross<br />
+                        Shivamogga - 577201, Karnataka
                       </Typography>
                     </Box>
                   </Box>
@@ -190,7 +183,13 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                         Email:
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        harsha497cs@gmail.com
+                        <Button 
+                          variant="text" 
+                          sx={{ p: 0, minWidth: 'auto', textTransform: 'none' }}
+                          onClick={() => window.open('https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox', '_blank')}
+                        >
+                          chetansreenath@gmail.com
+                        </Button>
                       </Typography>
                     </Box>
                   </Box>
@@ -213,7 +212,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                         Call:
                       </Typography>
                       <Typography variant="body2" color="text.secondary">
-                        +91 9880339147
+                        +91 6361417492
                       </Typography>
                     </Box>
                   </Box>
@@ -239,7 +238,7 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                         <Button 
                           variant="text" 
                           sx={{ p: 0, minWidth: 'auto', textTransform: 'none' }}
-                          onClick={() => window.open('https://wa.me/9880339147', '_blank')}
+                          onClick={() => window.open('https://wa.me/6361417492', '_blank')}
                         >
                           click here
                         </Button>
@@ -258,13 +257,13 @@ export default function Contact({ onPhone, onEmail, onLinkedIn }) {
                   }}>
                     <iframe
                       width="100%"
-                      src="https://www.google.com/maps?q=Kanchipura,+Karnataka+577533&output=embed"
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3888.1234567890123!2d75.5319308!3d13.9302454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDU1JzQ4LjkiTiA3NcKwMzEnNTQuOSJF!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin&q=vinobha+nagara+1st+stage+6th+cross+shivamogga+577201"
                       height="100%"
                       style={{ border: 0 }}
                       allowFullScreen=""
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
-                      title="Location Map - Kanchipura, Karnataka"
+                      title="Location Map - Vinobha Nagara 1st Stage, 6th Cross, Shivamogga"
                     />
                   </Box>
                 </Stack>

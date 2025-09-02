@@ -27,7 +27,7 @@ export default function Drawer({
   onClose,
   isMobile = false,
   profile = {
-    name: 'harsha p',
+    name: 'Chetan Sreenatha',
     role: 'Frontend Developer',
     avatarUrl: '',
   },
@@ -39,9 +39,9 @@ export default function Drawer({
 
   ],
   socials = [
-    { id: 'github', icon: <GitHubIcon />, href: 'https://github.com/harsha497c' },
-    { id: 'linkedin', icon: <LinkedInIcon />, href: 'www.linkedin.com/in/harsha-p-2247aa374' },
-    { id: 'email', icon: <MailOutlineIcon />, href: 'mailto:harsha497cs@gmail.com' },
+    { id: 'github', icon: <GitHubIcon />, href: 'https://github.com/cheathu87' },
+    { id: 'linkedin', icon: <LinkedInIcon />, href: 'www.linkedin.com/in/Chetan Sreenatha-p-2247aa374' },
+    { id: 'email', icon: <MailOutlineIcon />, href: 'mailto:chetansreenatha' },
   ],
   palette = {
     headerBg: 'transparent',
