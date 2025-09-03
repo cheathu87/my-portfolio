@@ -53,7 +53,7 @@ function App() {
   return (
     <div className="App" style={{ display: 'flex' }}>
       {/* Mobile Menu Button */}
-      {(isMobile || !mobileOpen) && (
+      {!mobileOpen && (
         <Box
           sx={{
             position: 'fixed',
@@ -114,7 +114,7 @@ function App() {
       <div style={{ 
         flex: 1, 
         marginLeft: isMobile ? 0 : (mobileOpen ? '320px' : 0),
-        paddingTop: isMobile ? 80 : 0
+        paddingTop: isMobile ? 0 : 0
       }}>
         {/* Home Section */}
         <div data-section="home">
