@@ -76,13 +76,13 @@ export default function Home() {
       sx={{ 
         py: { xs: 2, sm: 4, md: 6 }, 
         textAlign: 'center',
-        minHeight: '100vh',
-        height: '100vh',
+        minHeight: { xs: '100svh', md: '100vh' },
+        height: { xs: 'auto', md: '100vh' },
         backgroundImage: `url("${backgroundImages[currentBackground]}")`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
-        backgroundAttachment: 'fixed',
+        backgroundAttachment: { xs: 'scroll', md: 'fixed' },
         position: 'relative',
         display: 'flex',
         alignItems: 'center',
@@ -129,7 +129,18 @@ export default function Home() {
         }}
       />
       
-      <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1, px: { xs: 2, sm: 3 } }}>
+      <Container 
+        maxWidth="md" 
+        sx={{ 
+          position: 'relative', 
+          zIndex: 1, 
+          px: { xs: 2, sm: 3 },
+          textAlign: { xs: 'center', sm: 'center' },
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center'
+        }}
+      >
         <Typography 
           variant="h4" 
           sx={{ 
@@ -147,6 +158,7 @@ export default function Home() {
             fontStyle: 'italic',
             textTransform: 'uppercase'
           }}
+          align="center"
         >
           <Box
             component="span"
@@ -174,6 +186,7 @@ export default function Home() {
             fontStyle: 'italic',
             textTransform: 'uppercase'
           }}
+          align="center"
         >
           <Box
             component="span"
@@ -197,6 +210,7 @@ export default function Home() {
             justifyContent: 'center',
             fontSize: { xs: '1.5rem', sm: '2.5rem' }
           }}
+          align="center"
         >
           <Box
             component="span"
@@ -218,6 +232,7 @@ export default function Home() {
             fontSize: { xs: '0.9rem', sm: '1.1rem' },
             px: { xs: 1, sm: 0 }
           }}
+          align="center"
         >
           I craft responsive, accessible, and performant web experiences with React and modern tooling.
         </Typography>
