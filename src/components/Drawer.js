@@ -77,7 +77,9 @@ export default function Drawer({
       bgcolor: '#F8F8F8',
       position: 'fixed',
       top: 0,
-      left: isMobile ? (mobileOpen ? 0 : '-100%') : 0,
+      left: isMobile
+        ? (mobileOpen ? 0 : '-100%')
+        : (mobileOpen ? 0 : `-${width}px`),
       zIndex: 1200,
       overflow: 'hidden',
       transition: isMobile ? 'left 0.3s ease-in-out' : 'none',
@@ -120,14 +122,21 @@ export default function Drawer({
               {profile.role}
             </Typography>
           </Box>
-          {isMobile && (
-            <IconButton
-              onClick={onClose}
-              sx={{ color: 'inherit' }}
-            >
-              <CloseIcon />
-            </IconButton>
-          )}
+          <IconButton
+            onClick={onClose}
+            disableRipple
+            disableFocusRipple
+            aria-label="close"
+            sx={{ 
+              color: 'text.primary',
+              bgcolor: 'transparent',
+              '&:hover': { bgcolor: 'transparent' },
+              '&:active': { bgcolor: 'transparent' },
+              '& .MuiTouchRipple-root': { display: 'none' }
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
         </Box>
         
 

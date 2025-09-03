@@ -2,7 +2,7 @@ import React from 'react';
 import { useTheme, useMediaQuery } from '@mui/material';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
-import NavigationIcon from '@mui/icons-material/Navigation';
+import MenuIcon from '@mui/icons-material/Menu';
 
 import Drawer from './components/Drawer';
 import About from './components/about';
@@ -53,16 +53,13 @@ function App() {
   return (
     <div className="App" style={{ display: 'flex' }}>
       {/* Mobile Menu Button */}
-      {isMobile && (
+      {(isMobile || !mobileOpen) && (
         <Box
           sx={{
             position: 'fixed',
             top: 16,
             left: 16,
             zIndex: 1300,
-            bgcolor: 'white',
-            borderRadius: '50%',
-            boxShadow: 3,
           }}
         >
           <IconButton
@@ -70,9 +67,18 @@ function App() {
             aria-label="open drawer"
             edge="start"
             onClick={handleDrawerToggle}
-            sx={{ p: 1 }}
+            disableRipple
+            disableFocusRipple
+            sx={{ 
+              p: 1,
+              color: 'white',
+              bgcolor: 'transparent',
+              '&:hover': { bgcolor: 'transparent' },
+              '&:active': { bgcolor: 'transparent' },
+              '& .MuiTouchRipple-root': { display: 'none' }
+            }}
           >
-            <NavigationIcon />
+            <MenuIcon />
           </IconButton>
         </Box>
       )}
@@ -107,7 +113,7 @@ function App() {
       {/* Main Content */}
       <div style={{ 
         flex: 1, 
-        marginLeft: isMobile ? 0 : '320px',
+        marginLeft: isMobile ? 0 : (mobileOpen ? '320px' : 0),
         paddingTop: isMobile ? 80 : 0
       }}>
         {/* Home Section */}
